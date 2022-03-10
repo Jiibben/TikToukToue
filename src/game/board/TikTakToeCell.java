@@ -9,16 +9,22 @@ public class TikTakToeCell extends JButton {
 
     // 0 for checked 1 for round 2 for cross
     private Player checkedBy;
+    public static final Color WINNINGCOLOR = Color.GREEN;
 
     public TikTakToeCell(){
         super();
         this.setBackground(Color.WHITE);
         this.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
         this.setVisible(true);
-        this.setBackground(Color.LIGHT_GRAY);
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
 
+    }
+
+    public void setWinning(){
+        this.setBackground(WINNINGCOLOR);
+        this.setContentAreaFilled(true);
+        this.setBorderPainted(false);
     }
 
     public void disableCell(){
@@ -47,6 +53,8 @@ public class TikTakToeCell extends JButton {
         this.uncheck();
         this.enableCell();
         this.setIcon(null);
+        this.setContentAreaFilled(false);
+        this.setBorderPainted(true);
     }
 
     public boolean canBeChecked(){

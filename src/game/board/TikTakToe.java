@@ -14,8 +14,8 @@ public class TikTakToe extends JPanel implements ActionListener {
     TikTakToeCell[] cells = new TikTakToeCell[9];
 
     private final ArrayDeque<Player> playerQueue = new ArrayDeque<>();
-    private final Player crossPlayer = new Player("/home/allanburnier/IdeaProjects/gui/cross.png", "croix");
-    private final Player roundPlayer = new Player("/home/allanburnier/IdeaProjects/gui/round.png", "ronds");
+    private final Player crossPlayer = new Player("/home/allanburnier/IdeaProjects/ToukTikToe/cross.png", "croix");
+    private final Player roundPlayer = new Player("//home/allanburnier/IdeaProjects/ToukTikToe/round.png", "ronds");
     private Player currentlyPlaying;
 
 
@@ -43,15 +43,27 @@ public class TikTakToe extends JPanel implements ActionListener {
     public boolean checkWin() {
         for (int i = 0; i < 3; i++) {
             if (cells[i * 3].getCheckedBy() != null && cells[i * 3].getCheckedBy() == cells[i * 3 + 1].getCheckedBy() && cells[i * 3 + 1].getCheckedBy() == cells[i * 3 + 2].getCheckedBy()) {
+                cells[i*3].setWinning();
+                cells[i*3+1].setWinning();
+                cells[i*3+2].setWinning();
                 return true;
             }
             if (cells[i].getCheckedBy() != null && cells[i].getCheckedBy() == cells[i + 3].getCheckedBy() && cells[i + 3].getCheckedBy() == cells[i + 6].getCheckedBy()) {
+                cells[i].setWinning();
+                cells[i+3].setWinning();
+                cells[i+6].setWinning();
                 return true;
             }
             if (cells[0].getCheckedBy() != null && cells[0].getCheckedBy() == cells[4].getCheckedBy() && cells[4].getCheckedBy() == cells[8].getCheckedBy()) {
+                cells[0].setWinning();
+                cells[4].setWinning();
+                cells[8].setWinning();
                 return true;
             }
             if (cells[2].getCheckedBy() != null && cells[2].getCheckedBy() == cells[4].getCheckedBy() && cells[4].getCheckedBy() == cells[6].getCheckedBy()) {
+                cells[2].setWinning();
+                cells[4].setWinning();
+                cells[6].setWinning();
                 return true;
             }
         }
